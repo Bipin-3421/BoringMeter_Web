@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const AuthLayout = () => {
   return (
-    <main className="flex w-full h-screen">
+    <main className="flex  h-screen">
       <section className="flex  bg-test flex-col gap-5 w-2/5 items-center py-8 space-y-12">
         <div>
           <img
