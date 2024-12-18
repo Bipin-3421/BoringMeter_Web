@@ -40,4 +40,7 @@
   .overline {
     @apply text-[10px] leading-[14px] font-normal;
   }
+  .button {
+    @apply p-4 cursor-pointer bg-[#333F4E]  hover:bg-fuchsia-600;
+  }
 }
