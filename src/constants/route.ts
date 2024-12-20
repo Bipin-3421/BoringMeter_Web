@@ -1,1 +1,1 @@
-const authurl = "/user";
+// const authurl = "/user";
