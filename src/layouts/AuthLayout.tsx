@@ -5,11 +5,7 @@ const AuthLayout = () => {
     <main className="flex  h-screen">
       <section className="lg:flex hidden  bg-brand flex-col gap-5 w-2/5 items-center py-8 space-y-12">
         <div>
-          <img
-            className="w-[14rem] h-[5rem]"
-            src="../../public/Logo.svg"
-            alt="auth"
-          />
+          <img className="w-[14rem] h-[5rem]" src="/Logo.svg" alt="auth" />
         </div>
         <div className="space-y-8 w-[25rem]">
           <h1 className="h1 text-[#ffffff]  font-poppins ">
@@ -22,7 +18,7 @@ const AuthLayout = () => {
         </div>
         <div className=" mt-[20rem]">
           <img
-            src="../../public/Illustration.png"
+            src="Illustration.png"
             alt=""
             className="transition-all hover:rotate-2 hover:scale-105"
           />
@@ -32,7 +28,7 @@ const AuthLayout = () => {
         <div className="lg:hidden mb-16 ">
           <img
             className="w-[14rem] h-auto "
-            src="../../public/logo-full-brand.svg"
+            src="/logo-full-brand.svg"
             alt="auth"
           />
         </div>
