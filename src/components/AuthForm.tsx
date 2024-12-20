@@ -8,15 +8,18 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import * as z from "zod";
-import { AuthFormSchema } from "../schema/auth.schema";
+import { AuthFormSchema, Tlogin } from "../schema/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useLoginMutation } from "@/http/mutations/auth.mutation";
 
 type FormType = "sign-in" | "sign-up";
 
 const AuthForm = ({ type }: { type: FormType }) => {
+  const { mutate: loginMutation } = useLoginMutation();
+
   const form = useForm<z.infer<typeof AuthFormSchema>>({
     resolver: zodResolver(AuthFormSchema),
     defaultValues: {
@@ -27,12 +30,17 @@ const AuthForm = ({ type }: { type: FormType }) => {
     },
   });
 
-  const onSubmit = () => {};
+  const onSubmit = (data: Tlogin) => {
+    loginMutation(data);
+    form.reset();
+  };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="auth-form">
-        <h1 className="">{type === "sign-in" ? "Sign In " : "Sign Up"}</h1>
+        <h1 className="form-title">
+          {type === "sign-in" ? "Sign In " : "Sign Up"}
+        </h1>
         {type === "sign-up" && (
           <FormField
             control={form.control}
@@ -67,6 +75,48 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <FormControl>
                   <Input
                     placeholder="Enter your email"
+                    className="shad-input"
+                    {...field}
+                  />
+                </FormControl>
+              </div>
+
+              <FormMessage className="shad-form-message" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <div className="shad-form-item">
+                <FormLabel className="shad-form-label">Password</FormLabel>
+
+                <FormControl>
+                  <Input
+                    placeholder="Enter your password"
+                    className="shad-input"
+                    {...field}
+                  />
+                </FormControl>
+              </div>
+
+              <FormMessage className="shad-form-message" />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="phoneNumber"
+          render={({ field }) => (
+            <FormItem>
+              <div className="shad-form-item">
+                <FormLabel className="shad-form-label">Phone</FormLabel>
+
+                <FormControl>
+                  <Input
+                    placeholder="Enter your phone number"
                     className="shad-input"
                     {...field}
                   />
